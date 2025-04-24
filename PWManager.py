@@ -3,6 +3,14 @@ import pandas as pd
 
 #functions/global variables/classes
 #its recomended to use a class
+
+'''
+IMPORTANT! 
+functions such as the Save and Get functions in the classes have "pass" in them. 
+Once you add code DELETE THE PASS! Pass is there to break the function as to not produce any errors while still having the layout clear.
+Also currently i have commented out the code in SaveTheData as it did not work, so far the only working features is our ability to add values to the list
+
+'''
 account = []
 n= input("Are you a new user? (Y/N) ")
 class pwmanager:
@@ -17,9 +25,14 @@ class pwmanager:
         account.append(self.user)
         account.append(self.password)
         account.append(self.category)
-    def SaveTheData(): #This will use the pandas module to save the data
+        print(account)
+    def SaveTheData(self): #This will use the pandas module to save the data! Be sure at the very end we clear the account list, as to not mix up any data!!
         pass
-    def GetAccount(): #This will use the pandas module to grab the data
+        with open("database.csv","w") as file:
+             file.write(account)
+             file.close()
+             print("Uploaded info to database succesfully!")
+    def GetAccount(self, user): #This will use the pandas module to grab the data
         pass
 
 
@@ -30,6 +43,5 @@ if n == "y":
 elif n == "n":
     a1=pwmanager()
     pwmanager.AppendEntry(a1)
-    print(account)
-    #pwmanager.SaveTheData()
+    pwmanager.SaveTheData(a1)
         
