@@ -34,10 +34,19 @@ class pwmanager:
             write.writerow(account)
             print("Uploaded info to database succesfully!")
             account.clear()
-    def GetAccount(self, user): #This will use the pandas module to grab the data
-        pass
-
-
+    def GetAccount(self, user):  # This will use pandas to grab data
+    try:
+        df = pd.read_csv("database.csv")
+        found = df[df['Username'].str.lower() == user.lower()]
+        if not found.empty:
+            print("Account found:")
+            print(found)
+        else:
+            print("No account found with that username.")
+    except FileNotFoundError:
+        print("Database file not found.")
+    except Exception as e:
+        print("An error occurred while retrieving the account:", e) #asked cht gpt to help with preexisting code to clean up the get account slightly
 #mainloop section
 #this will be the section where we ask the user if he/she/they wants to make an account or get an existing one.
 if n == "y":
