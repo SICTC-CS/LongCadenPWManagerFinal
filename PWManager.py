@@ -1,6 +1,6 @@
 #import section
 import pandas as pd
-
+import csv as csv
 #functions/global variables/classes
 #its recomended to use a class
 
@@ -26,12 +26,14 @@ class pwmanager:
         account.append(self.password)
         account.append(self.category)
         print(account)
-    def SaveTheData(self): #This will use the pandas module to save the data! Be sure at the very end we clear the account list, as to not mix up any data!!
-        pass
-        with open("database.csv","w") as file:
-             file.write(account)
-             file.close()
-             print("Uploaded info to database succesfully!")
+    def SaveTheData(self): #This all saves the data to the database.csv file!! it also clears the list so we can keep using it.
+        #i suck at data science and wouldnt have figured this out if it werent for bander and GeeksForGeeks https://www.geeksforgeeks.org/writing-data-from-a-python-list-to-csv-row-wise/
+        file= open("database.csv","a+",newline='')
+        with file:
+            write= csv.writer(file)
+            write.writerow(account)
+            print("Uploaded info to database succesfully!")
+            account.clear()
     def GetAccount(self, user): #This will use the pandas module to grab the data
         pass
 
@@ -39,9 +41,9 @@ class pwmanager:
 #mainloop section
 #this will be the section where we ask the user if he/she/they wants to make an account or get an existing one.
 if n == "y":
-    pass
-elif n == "n":
     a1=pwmanager()
     pwmanager.AppendEntry(a1)
     pwmanager.SaveTheData(a1)
+elif n == "n":
+    pass
         
