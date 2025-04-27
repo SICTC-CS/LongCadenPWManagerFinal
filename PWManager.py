@@ -26,6 +26,8 @@ class pwmanager:
         account.append(self.password)
         account.append(self.category)
         print(account)
+    def CheckData(self): #This function will handle checking the data, this includes ensuring the selected user is unique and the password meets the critera in the README.md
+        pass
     def SaveTheData(self): #This all saves the data to the database.csv file!! it also clears the list so we can keep using it.
         #i suck at data science and wouldnt have figured this out if it werent for bander and GeeksForGeeks https://www.geeksforgeeks.org/writing-data-from-a-python-list-to-csv-row-wise/
         file= open("database.csv","a+",newline='')
@@ -35,18 +37,19 @@ class pwmanager:
             print("Uploaded info to database succesfully!")
             account.clear()
     def GetAccount(self, user):  # This will use pandas to grab data
-    try:
-        df = pd.read_csv("database.csv")
-        found = df[df['Username'].str.lower() == user.lower()]
-        if not found.empty:
-            print("Account found:")
-            print(found)
-        else:
-            print("No account found with that username.")
-    except FileNotFoundError:
-        print("Database file not found.")
-    except Exception as e:
-        print("An error occurred while retrieving the account:", e) #asked cht gpt to help with preexisting code to clean up the get account slightly
+        pass
+    # try:
+    #     df = pd.read_csv("database.csv")
+    #     found = df[df['Username'].str.lower() == user.lower()]
+    #     if not found.empty:
+    #         print("Account found:")
+    #         print(found)
+    #     else:
+    #         print("No account found with that username.")
+    # except FileNotFoundError:
+    #     print("Database file not found.")
+    # except Exception as e:
+    #     print("An error occurred while retrieving the account:", e) #Caden asked ChatGPT to do the get function for him, this is what is spat ou
 #mainloop section
 #this will be the section where we ask the user if he/she/they wants to make an account or get an existing one.
 if n == "y":
