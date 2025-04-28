@@ -1,6 +1,7 @@
 #import section
 import pandas as pd
 import csv as csv
+import random
 #functions/global variables/classes
 #its recomended to use a class
 
@@ -20,7 +21,7 @@ class pwmanager:
         #TODO Make it so the user can input something to create a randomly generated password, also check for the password criteria as described in the README.md
         self.name = input("What is your name? ")
         self.user = input("what is your username? ")
-        self.password = input("What is your password? ")
+        self.password = input("What is your password? (Leave blank for auto generated one) ")
         self.category = input("What is your category? ")
     def AppendEntry(self): #this appends it to the account list
         account.append(self.name)
@@ -28,8 +29,11 @@ class pwmanager:
         account.append(self.password)
         account.append(self.category)
         print(account)
-    def CheckData(self): #This function will handle checking the data, this includes ensuring the selected user is unique and the password meets the critera in the README.md
-        pass
+    def CheckData(self): 
+        if self.password == "":
+            x = int(input("How long do you want the password to be? "))
+            asciiText = range(33, 126)
+            self.password = ''.join(chr(random.choice(asciiText)) for _ in range(x))
     def SaveTheData(self): #This all saves the data to the database.csv file!! it also clears the list so we can keep using it.
         #i suck at data science and wouldnt have figured this out if it werent for bander and GeeksForGeeks https://www.geeksforgeeks.org/writing-data-from-a-python-list-to-csv-row-wise/
         file= open("database.csv","a+",newline='')
@@ -63,6 +67,7 @@ while True:
     n =input("Are you a new user? (Y/N) ")
     if n == "y":
         pwmanager.NewEntry(a1)
+        pwmanager.CheckData(a1)
         pwmanager.AppendEntry(a1)
         pwmanager.SaveTheData(a1)
     elif n == "n":
