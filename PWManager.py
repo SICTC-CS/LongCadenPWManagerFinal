@@ -12,9 +12,11 @@ Also currently i have commented out the code in SaveTheData as it did not work, 
 
 '''
 account = []
-n= input("Are you a new user? (Y/N) ")
+n= ""
+finduser = ""
+
 class pwmanager:
-    def __init__(self): #this makes it so every time we make a new account object it will ask for name, user, pass, and category.
+    def NewEntry(self): #this makes it so every time we make a new account object it will ask for name, user, pass, and category.
         #TODO Make it so the user can input something to create a randomly generated password, also check for the password criteria as described in the README.md
         self.name = input("What is your name? ")
         self.user = input("what is your username? ")
@@ -36,8 +38,11 @@ class pwmanager:
             write.writerow(account)
             print("Uploaded info to database succesfully!")
             account.clear()
-    def GetAccount(self, user):  # This will use pandas to grab data
-        pass
+    def GetAccount(self, finduser):  # This will use pandas to grab data
+        file= pd.read_csv("database.csv",header=0)
+        finduser = input("What is your Username (CASE SENSITIVE) ")
+        row = file.loc[file['user'] == finduser]
+        print(row)
     # try:
     #     df = pd.read_csv("database.csv")
     #     found = df[df['Username'].str.lower() == user.lower()]
@@ -50,12 +55,16 @@ class pwmanager:
     #     print("Database file not found.")
     # except Exception as e:
     #     print("An error occurred while retrieving the account:", e) #Caden asked ChatGPT to do the get function for him, this is what is spat ou
+    
+a1=pwmanager()
 #mainloop section
 #this will be the section where we ask the user if he/she/they wants to make an account or get an existing one.
-if n == "y":
-    a1=pwmanager()
-    pwmanager.AppendEntry(a1)
-    pwmanager.SaveTheData(a1)
-elif n == "n":
-    pass
+while True:
+    n =input("Are you a new user? (Y/N) ")
+    if n == "y":
+        pwmanager.NewEntry(a1)
+        pwmanager.AppendEntry(a1)
+        pwmanager.SaveTheData(a1)
+    elif n == "n":
+        pwmanager.GetAccount(a1, finduser)
         
