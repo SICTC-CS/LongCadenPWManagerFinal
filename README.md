@@ -10,39 +10,7 @@
     * If the user is a first-time user, allow them to create a profile.
         * Profile requirements: username, password (password requirements in item h), first, and last name.
         * Require users to log in after registration.
-2.  **Method to take in user input to store Account(username, password) based on categories.**
-    * Accounts must be able to be pulled based on categories.
-    * Each account needs the following data:
-        * Name
-        * Username
-        * Password
-        * Category
-3.  **Utilize a text file as a database:**
-    * Allow users to access their passwords again later.
-    * Users should be able to close down the program and log back in.
-4.  **Navigation through user-created categories:**
-    * Examples of categories: home, work, entertainment, bills, etc.
-    * Should be able to print out the categories for the user to view them.
-5.  **Password generator option (same as homework assignment):**
-    * Half points: include in a method.
-    * Full points: setup as a static method in a separate class.
 6.  **Delete or modify Account details.**
-7.  **Simple output format:**
-    ```
-    The account: {accountName}
-    The username: {username}
-    The password: {password}
-    ```
-8.  **User input and generated password requirements:**
-    * 1 capital character.
-    * 1 number.
-    * 1 special character (certain special characters allowed).
-    * At least 8 characters long.
-    * Half points: create a method to check this.
-    * Full points: create a class to check this.
-9.  **10% Bonus:** Save the file as a password-protected or encrypted file.
-10. **5% Bonus:** Create a method to check brute-force break time.
-11. **15% Bonus:** Save the info on an actual database.
 
 ### ii. Computer Science concepts to include:
 
