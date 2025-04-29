@@ -76,6 +76,10 @@ class pwmanager:
         else:
             print("Access Denied!")
             attempts+=1
+    def Delete(self):
+        pass
+    def Modify(self):
+        pass
                 
     def printAccount(self):
         print(f" Name:{self.name}")
