@@ -19,17 +19,17 @@ finduser = ""
 class pwmanager:
     def NewEntry(self): #this makes it so every time we make a new account object it will ask for name, user, pass, and category.
         #TODO Make it so the user can input something to create a randomly generated password, also check for the password criteria as described in the README.md
-        self.name = input("What is your name? ")
-        self.user = input("what is your username? ")
-        self.password = input("What is your password? (Leave blank for auto generated one) ")
-        self.category = input("What is your category? ")
+        self.name = input("Please enter your name? ")
+        self.user = input("Please enter your username? ")
+        self.password = input("Please enter your password? (Leave blank for auto generated one) ")
+        self.category = input("Please enter your category? ")
     def AppendEntry(self): #this appends it to the account list
         account.append(self.name)
         account.append(self.user)
         account.append(self.password)
         account.append(self.category)
     def CheckData(self): 
-        #This is the auto password feature
+        #This is the auto password feature and is also like the one thing that Caden did
         if self.password == "":
             x = 8
             asciiText = range(33,126)
