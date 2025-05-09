@@ -17,9 +17,6 @@ n= ""
 finduser = ""
 file= pd.read_csv("database.csv",header=0)
 class pwmanager:
-    
-   
-    
     def NewEntry(self): #this makes it so every time we make a new account object it will ask for name, user, pass, and category.
         #TODO Make it so the user can input something to create a randomly generated password, also check for the password criteria as described in the README.md
         self.name = input("What is your name? ")
@@ -37,6 +34,28 @@ class pwmanager:
             x = int(input("How long do you want the password to be? "))
             asciiText = range(33, 126)
             self.password = ''.join(chr(random.choice(asciiText)) for _ in range(x))
+              #this section will be checking the password. This section was also taken from Chatgpt because i didnt remember a whole lot of the functions for things like checking uppercase or digits
+        #but i do understand the code it spat out at me quite well
+        """Check if the password meets the criteria."""
+        # Define the list of allowed special characters
+        special_characters = "!@#$%^&*()-_=+[]{}|;:,.<>?/~"
+        # Check if password is at least 8 characters long
+        if len(self.password) < 8:
+            print("Password must be at least 8 characters long")
+            self.password = input("What is your password? (Leave blank for auto generated one) ")
+        # Check if the password contains at least one capital letter
+        if not any(char.isupper() for char in self.password):
+            print("password must have at least one uppercase letter")
+            self.password = input("What is your password? (Leave blank for auto generated one) ")
+        # Check if the password contains at least one number
+        if not any(char.isdigit() for char in self.password):
+            print("password must have at least one digit")
+            self.password = input("What is your password? (Leave blank for auto generated one) ")
+        # Check if the password contains at least one special character from the allowed list
+        if not any(char in special_characters for char in self.password):
+            print("must have at least one special character")
+            self.password = input("What is your password? (Leave blank for auto generated one) ")
+
     def SaveTheData(self): #This all saves the data to the database.csv file!! it also clears the list so we can keep using it.
         #i suck at data science and wouldnt have figured this out if it werent for bander and GeeksForGeeks https://www.geeksforgeeks.org/writing-data-from-a-python-list-to-csv-row-wise/
         file= open("database.csv","a+",newline='')
